@@ -74,5 +74,39 @@ namespace DeleeRefreshMonkey.ViewModels
             }
         }
         #endregion
+
+
+        private object selectedMonkey;
+        public object SelectedMonkey
+        {
+            get
+            {
+                return this.selectedMonkey;
+            }
+            set
+            {
+                this.selectedMonkey = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ICommand SingleSelectCommand => new Command(OnSingleSelectMonkey);
+
+        async void OnSingleSelectMonkey()
+        {
+            if (SelectedMonkey != null)
+            {
+                var navParam = new Dictionary<string, object>()
+            {
+                { "selectedMonkey",SelectedMonkey}
+            };
+                //Add goto here to show details
+                await Shell.Current.GoToAsync("selectedMonkey", navParam);
+
+                SelectedMonkey = null;
+            }
+        }
+
+
     }
 }

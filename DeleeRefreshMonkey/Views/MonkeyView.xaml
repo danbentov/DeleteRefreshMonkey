@@ -5,7 +5,9 @@
              Title="MonkeyView">
     <RefreshView 
              Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
-        <CollectionView ItemsSource="{Binding Monkeys}" x:Name="theCollectionView">
+        <CollectionView ItemsSource="{Binding Monkeys}" x:Name="theCollectionView"
+                        SelectedItem="{Binding SelectedMonkey}"
+                SelectionMode="Single" SelectionChangedCommand="{Binding SingleSelectCommand}">
 
             <CollectionView.ItemTemplate>
             <DataTemplate>
@@ -34,8 +36,10 @@
                             <Label Grid.Column="0" Grid.Row="1"
                         Text="{Binding Name}"/>
                             <Label Grid.Column="1" Grid.Row="0"
-                        Text="{Binding Details}" Grid.ColumnSpan="2"/>
-                    
+                        Text="{Binding Details}" />
+                            <Label Grid.Column="1" Grid.Row="1"
+                        Text="{Binding Location}" />
+
                         </Grid>
                     </SwipeView>
                 </DataTemplate>
