@@ -25,8 +25,11 @@ namespace DeleeRefreshMonkey.ViewModels
                 OnPropertyChanged();
             }
         }
-        public MonkeyViewModel()
+
+        private MonkeyService monkeysService;
+        public MonkeyViewModel(MonkeyService service)
         {
+            this.monkeysService = service;
             monkeys = new ObservableCollection<Monkey>();
             IsRefreshing = false;
             ReadMonkeys();
@@ -101,7 +104,7 @@ namespace DeleeRefreshMonkey.ViewModels
                 { "selectedMonkey",SelectedMonkey}
             };
                 //Add goto here to show details
-                await Shell.Current.GoToAsync("selectedMonkey", navParam);
+                await Shell.Current.GoToAsync("MonkeyDetails", navParam);
 
                 SelectedMonkey = null;
             }
