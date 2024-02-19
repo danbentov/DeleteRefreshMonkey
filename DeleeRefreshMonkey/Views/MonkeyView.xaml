@@ -3,12 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DeleeRefreshMonkey.Views.MonkeyView"
              Title="MonkeyView">
+
+    <VerticalStackLayout>
+
+        <Picker
+            Title="Select a location">
+            <Picker.ItemsSource>
+                <x:String></x:String>
+            </Picker.ItemsSource>
+        </Picker>
+    
     <RefreshView 
              Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
         <CollectionView ItemsSource="{Binding Monkeys}" x:Name="theCollectionView"
                         SelectedItem="{Binding SelectedMonkey}"
                 SelectionMode="Single" SelectionChangedCommand="{Binding SingleSelectCommand}">
-
+            
             <CollectionView.ItemTemplate>
             <DataTemplate>
                     <SwipeView>
@@ -31,14 +41,17 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0" Grid.Row="0"
+                            <Image Margin="5" Grid.Column="0" Grid.Row="0"
                        Source="{Binding ImageUrl}"/>
                             <Label Grid.Column="0" Grid.Row="1"
-                        Text="{Binding Name}"/>
+                        Text="{Binding Name}"
+                                   FontAttributes="Bold"/>
                             <Label Grid.Column="1" Grid.Row="0"
-                        Text="{Binding Details}" />
+                        Text="{Binding Details}"
+                                   FontAttributes="Bold"/>
                             <Label Grid.Column="1" Grid.Row="1"
-                        Text="{Binding Location}" />
+                        Text="{Binding Location}" 
+                                   FontAttributes="Bold"/>
 
                         </Grid>
                     </SwipeView>
@@ -46,4 +59,5 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
     </RefreshView>
+    </VerticalStackLayout>
 </ContentPage>

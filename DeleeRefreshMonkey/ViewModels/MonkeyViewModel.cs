@@ -37,8 +37,7 @@ namespace DeleeRefreshMonkey.ViewModels
 
         private async void ReadMonkeys()
         {
-            MonkeyService service = new MonkeyService();
-            List<Monkey> list = await service.GetMonkeys();
+            List<Monkey> list = await monkeysService.GetMonkeys();
             this.Monkeys = new ObservableCollection<Monkey>(list);
         }
 
@@ -104,7 +103,7 @@ namespace DeleeRefreshMonkey.ViewModels
                 { "selectedMonkey",SelectedMonkey}
             };
                 //Add goto here to show details
-                await Shell.Current.GoToAsync("MonkeyDetails", navParam);
+                await Shell.Current.GoToAsync("monkeyDetails", navParam);
 
                 SelectedMonkey = null;
             }

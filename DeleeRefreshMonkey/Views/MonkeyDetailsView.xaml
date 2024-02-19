@@ -24,7 +24,7 @@
                                Text="{Binding SelectedMonkey.Details}" 
                                FontAttributes="Italic" HorizontalOptions="Center"/>
             <Image Grid.Column="0" Grid.Row="3"
-                               Source="{Binding ImageUrl}" 
+                               Source="{Binding SelectedMonkey.ImageUrl}" 
                                HorizontalOptions="Center"/>
         </Grid>
     </VerticalStackLayout>
